@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "482348733690",
+    "project_id": "registro-jornada-android",
+    "storage_bucket": "registro-jornada-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482348733690:android:788276142354119cbd2543",
+        "android_client_info": {
+          "package_name": "com.example.registro_jornada_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "482348733690-30j1k6irdc9gb34qa43lvtn7q8rlk743.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxBYhO1J1_o_SHllIuvGeZdisBIpc2lPI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "482348733690-30j1k6irdc9gb34qa43lvtn7q8rlk743.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
