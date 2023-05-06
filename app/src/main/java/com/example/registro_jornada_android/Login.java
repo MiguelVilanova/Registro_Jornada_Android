@@ -9,24 +9,26 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
     Button buttonLogin;
     EditText user;
     EditText password;
+    Button textOlvido;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
+        textOlvido = (Button) findViewById(R.id.olvido);
         user = (EditText) findViewById(R.id.boxEmail);
         password = (EditText) findViewById(R.id.boxPass);
         mAuth = FirebaseAuth.getInstance();
@@ -37,8 +39,49 @@ public class Login extends AppCompatActivity {
                 LogFirebase();
             }
         });
+
+        textOlvido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, PassOlvido.class);
+                startActivity(intent);
+            }
+        });
     }
 
+    public void LogFirebase() {
+        String email = user.getText().toString();
+        String password1 = password.getText().toString();
+        if (email.isEmpty()) {
+            user.setError("Campo vacio");
+        } else if (!Utils.isValid(email)) {
+            user.setError("El email no es válido");
+        } else if (password1.isEmpty()) {
+            password.setError("Campo vacio");
+
+        } else if (password.length() <= 5) {
+            password.setError("La contraseña tiene menos de 6 carácteres");
+        } else {
+            //metodo de firebase para login
+            mAuth.signInWithEmailAndPassword(email, password1)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                //si funciona hace un Intent para cambiar de pantalla y sino saca error con toast
+                                Intent intent = new Intent(Login.this, MainActivity.class);
+                                startActivity(intent);
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(Login.this, "Login fallido.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+    }
+/*
     public void LogFirebase(){
         mAuth.signInWithEmailAndPassword(user.getText().toString(), password.getText().toString() )
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -74,7 +117,11 @@ public class Login extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                             // updateUI(null);
                         }
+
+
                     }
                 });
-    }
+    }*/
+
+
 }
