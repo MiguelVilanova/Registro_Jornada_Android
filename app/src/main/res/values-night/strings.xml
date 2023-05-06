@@ -3,4 +3,6 @@
     <string name="botonContinuar">Continuar</string>
     <string name="hintEmailOlvido" />
     <string name="candadoapp">candadoapp</string>
+    <string name="salir">Salir</string>
+    <string name="opcion">opcion</string>
 </resources>
