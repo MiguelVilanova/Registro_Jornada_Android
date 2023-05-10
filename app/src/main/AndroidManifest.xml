@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Registro_Jornada_Android"
         tools:targetApi="31">
+        <activity android:name=".Fingerprint"
+
+            />
         <activity
             android:name=".Login"
             android:exported="true">
@@ -26,9 +29,12 @@
             android:exported="true">
 
         </activity>
+        <activity android:name=".FaceDetection" />
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="face" />
+
     </application>
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
 </manifest>

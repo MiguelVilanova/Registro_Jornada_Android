@@ -3,7 +3,7 @@
     <string name="hintEmail">Email</string>
     <string name="hintPass">Password</string>
     <string name="log_in">Log In</string>
-    <string name="securitylogin">SecurityLogin</string>
+    <string name="securitylogin">SecureLogin</string>
     <string name="login">Log In</string>
     <string name="olvid_su_contrase_a">¿Olvidó su contraseña?</string>
 </resources>
