@@ -28,11 +28,11 @@ public class PassOlvido extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pass_olvido);
 
-<<<<<<< HEAD
+
         toolbar = (Toolbar) findViewById(R.id.toolbarOlvidoPass);
-=======
+
         toolbar = findViewById(R.id.toolbarOlvidoPass);
->>>>>>> origin/rama-patri
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -85,8 +85,5 @@ public class PassOlvido extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/rama-patri
 }
