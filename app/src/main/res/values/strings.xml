@@ -6,4 +6,7 @@
     <string name="securitylogin">SecurityLogin</string>
     <string name="login">Log In</string>
     <string name="olvid_su_contrase_a">¿Olvidó su contraseña?</string>
+    <string name="botonContinuar">Continuar</string>
+    <string name="hintEmailOlvido" />
+    <string name="candadoapp">candadoapp</string>
 </resources>
