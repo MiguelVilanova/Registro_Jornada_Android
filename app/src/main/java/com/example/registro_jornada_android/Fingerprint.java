@@ -1,8 +1,5 @@
 package com.example.registro_jornada_android;
 
-
-
-
 import static android.hardware.biometrics.BiometricManager.Authenticators.BIOMETRIC_STRONG;
 import static android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL;
 
@@ -26,9 +23,6 @@ import java.util.concurrent.Executor;
 
 public class Fingerprint extends AppCompatActivity {
 
-
-
-
     private Executor executor;
     public BiometricPrompt biometricPrompt;
     private androidx.biometric.BiometricPrompt.PromptInfo promptInfo;
@@ -37,7 +31,7 @@ public class Fingerprint extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(fingerLogin);
+        setContentView(R.layout.activity_fingerrpint);
         fingerLogin=findViewById(R.id.fingerlogin);
 
         BiometricManager biometricManager = BiometricManager.from(this);
@@ -76,7 +70,7 @@ public class Fingerprint extends AppCompatActivity {
             public void onAuthenticationSucceeded(
                     @NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-               Intent intent=new Intent(Fingerprint.this,Login.class);
+                Intent intent=new Intent(Fingerprint.this,Login.class);
                 startActivity(intent);
             }
 
@@ -92,7 +86,7 @@ public class Fingerprint extends AppCompatActivity {
         promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Login biométrico")
                 .setSubtitle("Login usando credenciales biométricos")
-                .setNegativeButtonText("")
+                .setNegativeButtonText("boton")
                 .build();
 
         // Prompt appears when user clicks "Log in".
@@ -103,5 +97,11 @@ public class Fingerprint extends AppCompatActivity {
             biometricPrompt.authenticate(promptInfo);
         });
     }
-    }
+}
+
+
+
+
+
+
 
