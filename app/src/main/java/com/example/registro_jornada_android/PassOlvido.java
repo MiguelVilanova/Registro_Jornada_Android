@@ -6,10 +6,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -64,8 +66,15 @@ public class PassOlvido extends AppCompatActivity {
                             startActivity(intent);
                         } else {
                             // Ha ocurrido un error al enviar el correo electrónico
-                            Toast.makeText(PassOlvido.this, "Error al enviar el correo electrónico.",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast toast2 = new Toast(getApplicationContext());
+                            LayoutInflater inflater = getLayoutInflater();
+                            View layout = inflater.inflate(R.layout.custom_toast,
+                                    findViewById(R.id.lytLayout));
+                            View txtMsg = layout.findViewById(R.id.toastMensaje);
+                            ((TextView) txtMsg).setText("Error de usuario o contraseña");
+                            toast2.setDuration(Toast.LENGTH_SHORT);
+                            toast2.setView(layout);
+                            toast2.show();
                         }
                     }
                 });
