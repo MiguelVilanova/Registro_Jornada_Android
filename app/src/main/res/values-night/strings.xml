@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="botonContinuar">Continuar</string>
+    <string name="candadoapp">candado</string>
+    <string name="hintEmailOlvido">email</string>
+    <string name="salir">Salir</string>
+    <string name="opcion">Opción</string>
+</resources>

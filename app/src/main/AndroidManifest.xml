@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,9 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Registro_Jornada_Android"
         tools:targetApi="31">
-        <activity android:name=".Fingerprint"
+        <activity
+            android:name=".Splash"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PassOlvido"
+            android:exported="false" />
+        <activity android:name=".Fingerprint" />
         <activity
             android:name=".Login"
             android:exported="true">
@@ -26,15 +38,12 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity android:name=".FaceDetection" />
+
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="face" />
-
     </application>
-    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
 </manifest>

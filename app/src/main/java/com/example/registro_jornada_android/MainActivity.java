@@ -1,12 +1,15 @@
 package com.example.registro_jornada_android;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -32,14 +35,20 @@ public class MainActivity extends AppCompatActivity {
      private Button botonEntrada;
 
      private Button switchFace;
+
+     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //implementacion toolbar
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         Intent intent = getIntent();
         String message = intent.getStringExtra("USER");
-         MenuInflater inflater = getMenuInflater();
-         inflater.inflate(R.menu.menu, menu);
+
         botonEntrada = (Button) findViewById(R.id.buttonEntrada);
         botonEntrada.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -73,5 +82,28 @@ public class MainActivity extends AppCompatActivity {
                         Log.w("MainActivity", "Error adding document", e);
                     }
                 });
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //esto lo suyo sería hacerlo con un switch hay que mirarlo
+        if (item.getItemId() == R.id.salir) {
+            mAuth.signOut();
+            onBackPressed();
+            finish();
+            return true;
+        } else if (item.getItemId() == R.id.opcion) {
+            return true;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
