@@ -6,4 +6,8 @@
     <string name="securitylogin">SecurityLogin</string>
     <string name="login">Log In</string>
     <string name="olvid_su_contrase_a">¿Olvidó su contraseña?</string>
+    <string name="entrada">ENTRADA</string>
+    <string name="fecha">FECHA</string>
+    <string name="salida">SALIDA</string>
+    <string name="nota">NOTA</string>
 </resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/fecha"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@drawable/celda"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:text="@string/fecha"
+            android:textColor="#000000"
+            tools:ignore="HardcodedText"
+            tools:layout_editor_absoluteY="30dp"/>
+
+        <TextView
+            android:id="@+id/entrada"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:background="@drawable/celda"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:text="@string/entrada"
+            android:textColor="#000000"
+            tools:ignore="HardcodedText"
+            tools:layout_editor_absoluteY="100dp"/>
+
+        <TextView
+            android:id="@+id/salida"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:background="@drawable/celda"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:text="@string/salida"
+            android:textColor="#000000"
+            tools:ignore="HardcodedText"
+            tools:layout_editor_absoluteY="30dp"/>
+
+        <TextView
+            android:id="@+id/notas"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/celda"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:text="@string/nota"
+            android:textColor="#000000"
+            tools:layout_editor_absoluteY="30dp"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

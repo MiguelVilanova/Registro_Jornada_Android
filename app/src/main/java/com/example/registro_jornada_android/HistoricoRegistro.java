@@ -25,9 +25,9 @@ public class HistoricoRegistro extends AppCompatActivity {
     private FirebaseAuth mAuth;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     String emailUsuario;
-    List<String> listJornada = new ArrayList<>();
+    ArrayList<JornadaDiaria> listJornada = new ArrayList<>();
     ListView listViewJornada;//, listViewEntrada, listViewSalida;
-    ArrayAdapter<String> mAdapterJornada;//, mAdapterEntrada, mAdapterSalida;
+    JornadaListAdapter mAdapterJornada;//, mAdapterEntrada, mAdapterSalida;
 
     String mensajeUsuario;
 
@@ -36,16 +36,16 @@ public class HistoricoRegistro extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.historico_registro);
+        setContentView(R.layout.historico_tabla);
 
         mAuth = FirebaseAuth.getInstance();
         emailUsuario = mAuth.getCurrentUser().getEmail();
 
         listViewJornada = findViewById(R.id.listaJornada);
 
-        mensajeBienvenida = findViewById(R.id.mensajeUser);
+        //mensajeBienvenida = findViewById(R.id.mensajeUser);
 
-        mensajeBienvenida.setText("¡Hola, "+ emailUsuario +"!");
+        //mensajeBienvenida.setText("¡Hola, "+ emailUsuario +"!");
 
         //Mostrar histórico del usuario actual:
         mostrarHistorico();
@@ -70,16 +70,17 @@ public class HistoricoRegistro extends AppCompatActivity {
 
                         listJornada.clear();
 
-                        Log.d("HistoricoRegistro","Mostrando datos de: " + emailUsuario);
+                        Log.d("HistoricoRegistro", "Mostrando datos de: " + emailUsuario);
 
                         for (QueryDocumentSnapshot doc : value) {
-                            listJornada.add(doc.getString("fecha")+" " +doc.getString("horaEntrada")+" "+doc.getString("horaSalida"));
+                            JornadaDiaria jornada = new JornadaDiaria(doc.getString("fecha"), doc.getString("horaEntrada"), doc.getString("horaSalida"));
+                            listJornada.add(jornada);
                         }
-                        Log.d("HistoricoRegistro","Total de registros: " + listJornada.size());
+                        Log.d("HistoricoRegistro", "Total de registros: " + listJornada.size());
                         if (listJornada.size() == 0) {
                             listViewJornada.setAdapter(null);
                         } else {
-                            mAdapterJornada = new ArrayAdapter<String>(HistoricoRegistro.this,  R.layout.jornada, R.id.jornada, listJornada);
+                            mAdapterJornada = new JornadaListAdapter(HistoricoRegistro.this, listJornada);
                             listViewJornada.setAdapter(mAdapterJornada);
 
                         }
@@ -91,3 +92,5 @@ public class HistoricoRegistro extends AppCompatActivity {
     }
 
 }
+
+
