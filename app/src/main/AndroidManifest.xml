@@ -38,11 +38,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-        <activity android:name=".FaceDetection" />
-
-        <meta-data
-            android:name="com.google.mlkit.vision.DEPENDENCIES"
-            android:value="face" />
+       
     </application>
 
 </manifest>
