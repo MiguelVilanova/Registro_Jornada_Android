@@ -37,7 +37,7 @@ public class Fingerprint extends AppCompatActivity {
         BiometricManager biometricManager = BiometricManager.from(this);
         switch (biometricManager.canAuthenticate()) {
             case BiometricManager.BIOMETRIC_SUCCESS:
-                Log.d("MY_APP_TAG", "App can authenticate using biometrics.");
+                Log.d("SecureLogin", "Se puede logear utilizando tus datos biométricos.");
                 break;
             case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
                 Toast.makeText(this,"El dispositivo no dispone de lector de huellas", Toast.LENGTH_SHORT);
@@ -46,7 +46,8 @@ public class Fingerprint extends AppCompatActivity {
                 Toast.makeText(this,"Hay un problema en el sensor", Toast.LENGTH_SHORT);
                 break;
             case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
-                // Prompts the user to create credentials that your app accepts.
+                // Si no hay huella configurada con este case se invoca la config
+                //se podrían llegar a aceptar los credenciales del dispositivo
                 final Intent enrollIntent = new Intent(Settings.ACTION_BIOMETRIC_ENROLL);
                 enrollIntent.putExtra(Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
                         BIOMETRIC_STRONG | DEVICE_CREDENTIAL);
@@ -85,13 +86,11 @@ public class Fingerprint extends AppCompatActivity {
 
         promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Login biométrico")
-                .setSubtitle("Login usando credenciales biométricos")
+                .setSubtitle("Login utilizando credenciales biométricos")
                 .setNegativeButtonText("boton")
                 .build();
 
-        // Prompt appears when user clicks "Log in".
-        // Consider integrating with the keystore to unlock cryptographic operations,
-        // if needed by your app.
+        
 
         fingerLogin.setOnClickListener(view -> {
             biometricPrompt.authenticate(promptInfo);
