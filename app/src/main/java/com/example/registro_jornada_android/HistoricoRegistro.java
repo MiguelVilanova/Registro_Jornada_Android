@@ -2,9 +2,13 @@ package com.example.registro_jornada_android;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,13 +34,18 @@ public class HistoricoRegistro extends AppCompatActivity {
     ArrayAdapter<String> mAdapterJornada;//, mAdapterEntrada, mAdapterSalida;
 
     String mensajeUsuario;
-
     TextView mensajeBienvenida;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.historico_registro);
+        setContentView(R.layout.activity_historico_registro);
+
+        //implementacion toolbar
+        toolbar = (Toolbar) findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAuth = FirebaseAuth.getInstance();
         emailUsuario = mAuth.getCurrentUser().getEmail();
@@ -88,6 +97,33 @@ public class HistoricoRegistro extends AppCompatActivity {
                 });
 
 
+    }
+
+    //funciones necesarias para el toolbar
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //esto lo suyo sería hacerlo con un switch hay que mirarlo
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+
+        if (item.getItemId() == R.id.salir) {
+            //mAuth.signOut();
+            onBackPressed();
+            finish();
+            return true;
+        } else if (item.getItemId() == R.id.opcion) {
+            return true;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

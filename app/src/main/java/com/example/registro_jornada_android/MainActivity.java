@@ -6,11 +6,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -29,7 +29,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -41,22 +40,23 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     String idDoc = "";
-    private Menu menu;
     private Button botonEntrada, botonHistorico;
     String emailUsuario;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = findViewById(R.id.toolbar);
+
+        //implementacion toolbar
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         Intent intent = getIntent();
         emailUsuario = intent.getStringExtra("USER");
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-       // cargarDatos();
+
+        // cargarDatos();
         botonEntrada = (Button) findViewById(R.id.buttonEntrada);
         botonEntrada.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -93,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
+
     public void iniciarJornada (String email, String horaEntrada, String fechaActual){
         Map<String, Object> user = new HashMap<>();
         user.put("user", email);
@@ -176,21 +179,29 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 });
-
-
-
-
     }
 
-}
+    //funciones necesarias para el toolbar
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
-
+    @SuppressLint("NonConstantResourceId")
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
+        //esto lo suyo sería hacerlo con un switch hay que mirarlo
+        if (item.getItemId() == R.id.salir) {
+            //mAuth.signOut();
             onBackPressed();
+            finish();
             return true;
+        } else if (item.getItemId() == R.id.opcion) {
+            return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
 
