@@ -10,4 +10,7 @@
     <string name="fecha">FECHA</string>
     <string name="salida">SALIDA</string>
     <string name="nota">NOTA</string>
+    <string name="botonContinuar">Continuar</string>
+    <string name="hintEmailOlvido" />
+    <string name="candadoapp">candadoapp</string>
 </resources>

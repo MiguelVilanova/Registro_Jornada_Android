@@ -68,19 +68,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
-    <TextView
+    <Button
         android:id="@+id/olvido"
         android:layout_width="262dp"
-        android:layout_height="36dp"
+        android:layout_height="38dp"
         android:layout_marginTop="40dp"
+        android:gravity="center"
         android:text="@string/olvid_su_contrase_a"
+        android:backgroundTint="@color/white"
         android:textColor="@color/blue"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        android:gravity="center" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
