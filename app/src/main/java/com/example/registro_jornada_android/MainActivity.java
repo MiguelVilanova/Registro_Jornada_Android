@@ -4,7 +4,6 @@ import static com.google.android.gms.common.util.CollectionUtils.mapOf;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,7 +37,6 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private Toolbar toolbar;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     String idDoc = "";
     private Menu menu;
@@ -48,15 +46,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         Intent intent = getIntent();
-        emailUsuario = intent.getStringExtra("USER");
+        mAuth = FirebaseAuth.getInstance();
+        emailUsuario = mAuth.getCurrentUser().getEmail();
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
-       // cargarDatos();
+        // cargarDatos();
         botonEntrada = (Button) findViewById(R.id.buttonEntrada);
         botonEntrada.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -181,10 +176,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-}
-
-
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
@@ -193,4 +184,8 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
+
+
+
 

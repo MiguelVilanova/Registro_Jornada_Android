@@ -19,12 +19,6 @@
             android:name=".Login"
  
             android:exported="true">
-
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-
         </activity>
         <activity
             android:name=".MainActivity"
@@ -47,7 +41,7 @@
             </intent-filter>
         </activity>
 
-            android:exported="true" />
+
 
     </application>
 
